@@ -36,6 +36,11 @@ public class SnowflakeIDGenImpl implements IDGen {
         this(zkAddress, port, 1288834974657L);
     }
 
+    public SnowflakeIDGenImpl(long workerID) {
+        //Thu Nov 04 2010 09:42:54 GMT+0800 (中国标准时间)
+        this(workerID, 1288834974657L);
+    }
+
     /**
      * @param zkAddress zk地址
      * @param port      snowflake监听端口
@@ -54,6 +59,13 @@ public class SnowflakeIDGenImpl implements IDGen {
         } else {
             Preconditions.checkArgument(initFlag, "Snowflake Id Gen is not init ok");
         }
+        Preconditions.checkArgument(workerId >= 0 && workerId <= maxWorkerId, "workerID must gte 0 and lte 1023");
+    }
+
+    public SnowflakeIDGenImpl(long workerID, long twepoch) {
+        this.twepoch = twepoch;
+        Preconditions.checkArgument(timeGen() > twepoch, "Snowflake not support twepoch gt currentTime");
+        workerId = workerID;
         Preconditions.checkArgument(workerId >= 0 && workerId <= maxWorkerId, "workerID must gte 0 and lte 1023");
     }
 

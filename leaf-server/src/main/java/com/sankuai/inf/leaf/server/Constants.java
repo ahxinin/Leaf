@@ -7,6 +7,8 @@ public class Constants {
     public static final String LEAF_JDBC_PASSWORD = "leaf.jdbc.password";
 
     public static final String LEAF_SNOWFLAKE_ENABLE = "leaf.snowflake.enable";
+    public static final String LEAF_SNOWFLAKE_CONFIG = "leaf.snowflake.config";
     public static final String LEAF_SNOWFLAKE_PORT = "leaf.snowflake.port";
     public static final String LEAF_SNOWFLAKE_ZK_ADDRESS = "leaf.snowflake.zk.address";
+    public static final String LEAF_SNOWFLAKE_WORK_ID = "leaf.snowflake.config.workId";
 }
